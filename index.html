@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MatheRechner Kostenloser Online Rechner für Matheaufgaben</title>
+<meta name="description" content="Matherechner löst Gleichungen, Prozent-, Bruch- und Zinsaufgaben online mit vollständigen Schritt-für-Schritt-Lösungen – kostenlos und ohne Download.">
+<link rel="canonical" href="https://matherechners.de/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Matherechner">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="MatheRechner Kostenloser Online Rechner für Matheaufgaben">
+<meta property="og:description" content="Matherechner löst Gleichungen, Prozent-, Bruch- und Zinsaufgaben online mit vollständigen Schritt-für-Schritt-Lösungen – kostenlos und ohne Download.">
+<meta property="og:url" content="https://matherechners.de/">
+<meta property="og:image" content="https://matherechners.de/images/ogimage.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MatheRechner Kostenloser Online Rechner für Matheaufgaben">
+<meta name="twitter:description" content="Matherechner löst Gleichungen, Prozent-, Bruch- und Zinsaufgaben online mit vollständigen Schritt-für-Schritt-Lösungen – kostenlos und ohne Download.">
+<meta name="twitter:image" content="https://matherechners.de/images/ogimage.webp">
+<link rel="icon" type="image/webp" href="/images/favicon%20matherechner.webp">
+<link rel="shortcut icon" href="/images/favicon%20matherechner.webp">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon%20matherechner.webp">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+  {"@type":"WebSite","@id":"https://matherechners.de/#website","url":"https://matherechners.de/","name":"Matherechner","inLanguage":"de"},
+  {"@type":"Organization","@id":"https://matherechners.de/#organization","name":"Matherechner","url":"https://matherechners.de/","logo":"https://matherechners.de/images/Matherechnerlogo.webp"},
+  {"@type":"WebApplication","name":"Matherechner","url":"https://matherechners.de/","applicationCategory":"EducationalApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}},
+  {"@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Ist der Matherechner kostenlos nutzbar?","acceptedAnswer":{"@type":"Answer","text":"Ja. Die überwiegende Mehrheit der Online-Mathe-Rechner ist völlig kostenlos. Sie benötigen keine Registrierung, kein Abonnement und keinen Download. Öffnen Sie einfach die Website in Ihrem Browser und nutzen Sie sie kostenlos."}},
+    {"@type":"Question","name":"Kann er Lösungen für komplexe mathematische Gleichungen liefern?","acceptedAnswer":{"@type":"Answer","text":"Ja. Moderne Tools bewältigen quadratische Gleichungen, Gleichungssysteme, Ableitungen, Integrale und Matrixberechnungen mit mehreren Variablen."}},
+    {"@type":"Question","name":"Reicht die Website aus oder müssen wir zusätzliche Software oder eine App installieren?","acceptedAnswer":{"@type":"Answer","text":"Für die meisten Nutzer reicht die Website aus. Sie funktioniert auf jedem Gerät ohne Installation."}},
+    {"@type":"Question","name":"Zeigt der Rechner den vollständigen Lösungsweg an oder nur das Endergebnis?","acceptedAnswer":{"@type":"Answer","text":"Sie erhalten das Ergebnis sofort, und jeder Zwischenschritt eignet sich ideal, um Ihre eigene Arbeit zu überprüfen und zu verstehen, wo ein Fehler passiert ist."}}
+  ]}
+]}
+</script>
+<style>
+body{margin:0}
+#matherechner-page{
+  --bg-hero:#1A212E;--bg-alt:#353F4F;--bg-deep:#121B2E;
+  --accent:#7F60F0;--accent2:#9F7FFF;
+  --txt:#FFFFFF;--txt2:#B8C0CE;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  color:var(--txt2);line-height:1.6;background:var(--bg-hero);
+  position:relative;margin:0;font-size:16px;
+}
+#matherechner-page *,#matherechner-page *::before,#matherechner-page *::after{box-sizing:border-box}
+#matherechner-page h1,#matherechner-page h2,#matherechner-page h3{color:var(--txt);line-height:1.25;margin:0}
+#matherechner-page p{margin:0 0 18px}
+#matherechner-page p:last-child{margin-bottom:0}
+#matherechner-page .mr-container{max-width:1140px;margin:0 auto;padding:0 22px}
+#matherechner-page .mr-section{padding:92px 0}
+#matherechner-page .mr-accent{color:var(--accent)}
+#matherechner-page .mr-h2{text-align:center;font-size:clamp(26px,3.4vw,36px);font-weight:800;margin-bottom:12px}
+#matherechner-page .mr-h2--left{text-align:left}
+#matherechner-page .mr-subtle{text-align:center;font-size:14px;color:var(--txt2);margin:0 auto 52px;max-width:640px}
+#matherechner-page .mr-narrow{max-width:800px;margin:0 auto}
+#matherechner-page .mr-chip{display:inline-block;background:rgba(127,96,240,.14);color:#BCA9FF;border:1px solid rgba(127,96,240,.4);padding:1px 12px;border-radius:999px;font-family:"SFMono-Regular",Consolas,monospace;font-size:.88em;white-space:nowrap}
+
+/* HEADER */
+#matherechner-page .mr-header{position:absolute;top:0;left:0;right:0;z-index:50;padding:5px 0;background:transparent;border-bottom:1px solid rgba(255,255,255,0.3)}
+#matherechner-page .mr-header .mr-container{display:flex;align-items:center;justify-content:space-between}
+#matherechner-page .mr-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+#matherechner-page .mr-logo img{display:block}
+#matherechner-page .mr-logo-ic{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;flex-shrink:0}
+#matherechner-page .mr-logo-tx{color:var(--txt);font-weight:700;font-size:17px}
+#matherechner-page .mr-nav{display:flex;align-items:center;gap:4px}
+#matherechner-page .mr-nav a{color:#C7CEDB;text-decoration:none;font-size:16px;font-weight:500;padding:6px 12px;border-radius:8px;transition:color .15s,background .15s}
+#matherechner-page .mr-nav a:hover{color:#fff;background:rgba(255,255,255,.07)}
+#matherechner-page .mr-nav a.active{color:var(--accent);border-bottom:2px solid var(--accent);border-radius:0;padding-bottom:4px}
+#matherechner-page .mr-burger{display:none;background:none;border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#fff;font-size:18px;padding:4px 10px;cursor:pointer;line-height:1}
+@media(max-width:760px){
+  #matherechner-page .mr-nav{display:none;position:absolute;top:58px;right:22px;left:22px;background:var(--bg-deep);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px;flex-direction:column;align-items:stretch;gap:2px;box-shadow:0 16px 40px rgba(0,0,0,.5)}
+  #matherechner-page .mr-nav.mr-open{display:flex}
+  #matherechner-page .mr-nav a{padding:10px 14px}
+  #matherechner-page .mr-burger{display:block}
+}
+
+/* HERO */
+#matherechner-page .mr-hero{background:var(--bg-hero);padding:112px 0 96px;text-align:center}
+#matherechner-page .mr-hero h1{font-size:35px;font-weight:800;max-width:980px;margin:0 auto 18px;letter-spacing:-.5px}
+
+/* SECTION BACKGROUNDS */
+#matherechner-page .mr-bg-hero{background:var(--bg-hero)}
+#matherechner-page .mr-bg-alt{background:var(--bg-alt)}
+#matherechner-page .mr-bg-deep{background:var(--bg-deep)}
+
+/* INTRO */
+#matherechner-page .mr-intro p{font-size:17px;line-height:1.75;color:#C9D1DE}
+
+/* TWO-COLUMN */
+#matherechner-page .mr-2col{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+#matherechner-page .mr-2col .mr-h2{margin-bottom:20px}
+#matherechner-page .mr-2col p{color:var(--txt2)}
+
+/* CHECKLIST */
+#matherechner-page .mr-check{list-style:none;margin:22px 0 0;padding:0}
+#matherechner-page .mr-check li{position:relative;padding:0 0 12px 34px;color:#C9D1DE}
+#matherechner-page .mr-check li::before{content:"";position:absolute;left:0;top:3px;width:20px;height:20px;border-radius:50%;background:rgba(127,96,240,.18);border:1px solid rgba(127,96,240,.5)}
+#matherechner-page .mr-check li::after{content:"";position:absolute;left:5px;top:8px;width:9px;height:5px;border-left:2px solid var(--accent2);border-bottom:2px solid var(--accent2);transform:rotate(-45deg)}
+
+/* MOCKUP */
+#matherechner-page .mr-mock{background:#0D1422;border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:16px;box-shadow:0 24px 60px rgba(0,0,0,.45);max-width:480px;margin:0 auto}
+#matherechner-page .mr-mock-top{display:flex;align-items:center;gap:6px;margin-bottom:14px}
+#matherechner-page .mr-mock-top i{width:9px;height:9px;border-radius:50%;display:block}
+#matherechner-page .mr-mock-top i:nth-child(1){background:#FF5F57}
+#matherechner-page .mr-mock-top i:nth-child(2){background:#FEBC2E}
+#matherechner-page .mr-mock-top i:nth-child(3){background:#28C840}
+#matherechner-page .mr-mock-url{flex:1;margin-left:8px;background:#fff;border-radius:6px;color:#5A6577;font-size:11px;padding:4px 10px;text-align:left}
+#matherechner-page .mr-mock-row{display:flex;gap:10px;align-items:stretch}
+#matherechner-page .mr-mock-chart{flex:1;display:flex;align-items:flex-end;gap:5px;background:#111A2C;border-radius:10px;padding:12px;height:110px}
+#matherechner-page .mr-mock-chart i{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(180deg,#3BE8AD,#1FA97C);display:block}
+#matherechner-page .mr-mock-side{width:38%;display:flex;flex-direction:column;gap:8px}
+#matherechner-page .mr-mock-pill{background:#111A2C;border:1px solid rgba(255,255,255,.06);border-radius:10px;color:#fff;font-weight:700;font-size:15px;padding:9px 12px;text-align:right}
+#matherechner-page .mr-mock-pill.small{font-size:12px;color:#8FA3C4;font-weight:500}
+#matherechner-page .mr-mock-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}
+#matherechner-page .mr-mock-keys u{text-decoration:none;background:#1A2438;border:1px solid rgba(255,255,255,.06);color:#DCE3EE;border-radius:8px;font-size:14px;font-weight:600;padding:9px 0;text-align:center}
+#matherechner-page .mr-mock-keys u.acc{background:linear-gradient(135deg,var(--accent2),var(--accent));border:none;color:#fff}
+#matherechner-page .mr-mock-keys u.grn{background:#1FA97C;border:none;color:#fff}
+#matherechner-page .mr-section-img{display:block;width:100%;max-width:530px;margin:0 auto;border-radius:20px;box-shadow:0 28px 55px rgba(15,23,42,.24);object-fit:cover}
+
+/* CARDS */
+#matherechner-page .mr-cards{display:grid;gap:26px}
+#matherechner-page .mr-cards--2{grid-template-columns:repeat(2,1fr);max-width:900px;margin:0 auto}
+#matherechner-page .mr-cards--3{grid-template-columns:repeat(3,1fr)}
+#matherechner-page .mr-card{position:relative;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:30px 26px;transition:transform .2s,border-color .2s}
+#matherechner-page .mr-card:hover{transform:translateY(-5px);border-color:rgba(127,96,240,.45)}
+#matherechner-page .mr-card h3{font-size:19px;margin:20px 0 12px}
+#matherechner-page .mr-card p{font-size:14.5px;color:var(--txt2)}
+#matherechner-page .mr-card-ic{width:54px;height:54px;border-radius:13px;background:var(--bg-deep);border:1px solid rgba(127,96,240,.35);display:flex;align-items:center;justify-content:center;color:var(--accent2);font-size:22px;font-weight:700}
+#matherechner-page .mr-card-arrow{position:absolute;top:22px;right:22px;width:34px;height:34px;border-radius:50%;background:#fff;color:#1A212E;display:flex;align-items:center;justify-content:center;font-size:14px;opacity:.9;transition:transform .2s}
+#matherechner-page .mr-card:hover .mr-card-arrow{transform:translate(3px,-3px)}
+#matherechner-page .mr-lead{max-width:760px;margin:0 auto 44px;text-align:center;color:#C9D1DE}
+
+/* STEPS */
+#matherechner-page .mr-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+#matherechner-page .mr-step{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:28px 24px}
+#matherechner-page .mr-step:first-child{background:linear-gradient(160deg,rgba(127,96,240,.28),rgba(127,96,240,.08));border-color:rgba(127,96,240,.4)}
+#matherechner-page .mr-step-num{width:42px;height:42px;border-radius:12px;background:#fff;color:#1A212E;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+#matherechner-page .mr-step h3{font-size:17px;margin-bottom:10px}
+#matherechner-page .mr-step p{font-size:14px}
+
+/* FAQ */
+#matherechner-page .mr-faq{max-width:860px;margin:0 auto}
+#matherechner-page .mr-faq-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;margin-bottom:14px;overflow:hidden}
+#matherechner-page .mr-faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:none;color:var(--txt);font-family:inherit;font-size:15px;font-weight:600;text-align:left;padding:18px 22px;cursor:pointer}
+#matherechner-page .mr-faq-q span:last-child{transition:transform .25s;color:var(--txt2);flex-shrink:0}
+#matherechner-page .mr-faq-item.open .mr-faq-q span:last-child{transform:rotate(180deg)}
+#matherechner-page .mr-faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+#matherechner-page .mr-faq-a p{padding:0 22px 20px;font-size:14.5px;color:var(--txt2)}
+
+/* FOOTER */
+#matherechner-page .mr-footer{background:transparent;padding:0;border:none}
+#matherechner-page .mr-footer-main{background:#1A212E;border-top:1px solid rgba(255,255,255,.06);padding:64px 0 56px;width:100%}
+#matherechner-page .mr-footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1.4fr;gap:28px;align-items:start}
+#matherechner-page .mr-footer-about{display:flex;flex-direction:column}
+#matherechner-page .mr-footer-about .mr-logo{margin-bottom:14px}
+#matherechner-page .mr-footer-about p{font-size:13px;line-height:1.65;color:#e0e4ea;margin:0}
+#matherechner-page .mr-footer h4{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin:0 0 18px;padding:0}
+#matherechner-page .mr-footer-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+#matherechner-page .mr-footer-links li{margin:0;padding:0}
+#matherechner-page .mr-footer-links a{color:#ffffff;text-decoration:none;font-size:13.5px;line-height:1;transition:color .15s,opacity .15s}
+#matherechner-page .mr-footer-links a:hover{color:#fff;opacity:.7}
+#matherechner-page .mr-footer-legal p{font-size:12.5px;line-height:1.7;color:#e0e4ea;margin:0}
+#matherechner-page .mr-footer-bottom{background:#353F4F;width:100%;padding:18px 0;text-align:center;font-size:12px;color:#ffffff;letter-spacing:.02em}
+
+/* CALCULATOR */
+#matherechner-page #mr-calc{max-width:650px;margin:0 auto;text-align:left;position:relative}
+#matherechner-page .mr-screen{display:none}
+#matherechner-page .mr-formula{color:#8FA3C4;font-size:13px;min-height:17px;text-align:right;word-break:break-all;line-height:1.3}
+#matherechner-page .mr-steps{display:none;flex-direction:column;gap:1px;margin:4px 0 2px;border-top:1px solid rgba(255,255,255,.08);padding-top:4px}
+#matherechner-page .mr-steps.open{display:flex}
+#matherechner-page .mr-step-line{font-size:11.5px;color:#5B8AAA;line-height:1.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#matherechner-page .mr-step-final{color:#A0CDE8;font-weight:600}
+#matherechner-page .mr-result{color:#fff;font-size:28px;font-weight:700;text-align:center;min-height:36px;word-break:break-all;line-height:1.25}
+#matherechner-page .mr-alt{color:#6A8FAF;font-size:12px;text-align:right;min-height:14px}
+#matherechner-page .mr-error{color:#FF9B9B;font-size:12px;text-align:right;min-height:14px}
+#matherechner-page .mr-panel{padding:20px 20px 10px;border-radius:10px;background:linear-gradient(to bottom,#f2f2f2 4%,#ebebeb 15%,#e6e6e6 77%,#e0e0e0 100%);border:1px solid rgba(54,64,79,.75);box-shadow:2px 2px 0 rgba(0,0,0,.2);position:relative}
+#matherechner-page .mr-inputrow{position:relative;height:37px;margin-bottom:2px}
+#matherechner-page .mr-hint{display:none}
+#matherechner-page #mr-input{position:absolute;inset:0;width:100%;height:32px;border:1px solid #c0c0c0;border-radius:5px;font-size:21px;font-family:Arial,sans-serif;line-height:30px;padding:0 6px;background:#fff;color:#111;outline:none;text-align:left}
+#matherechner-page #mr-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(127,96,240,.18)}
+#matherechner-page .mr-grid{display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:32px repeat(4,40px);gap:4px}
+#matherechner-page .mr-grid2{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:4px}
+#matherechner-page .mr-b{height:100%;min-height:32px;border:1px solid;border-color:#c0c0c0 #7491a5 #7491a5 #c0c0c0;border-radius:4px;background:linear-gradient(to bottom,#fff 0,#e6e6e6 100%);color:#414f5b;font-size:19px;font-family:Arial,sans-serif;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0;line-height:1;text-shadow:1px 1px 0 #fff;box-shadow:1px 1px 0 rgba(0,0,0,.05);transition:none}
+#matherechner-page .mr-b:hover{background:linear-gradient(to bottom,#f0f8ff 0,#d0e8f5 100%);border-color:#4271a5}
+#matherechner-page .mr-b:active{background:#E3D9FD;border-color:var(--accent)}
+#matherechner-page .mr-b--fn{font-size:17px;font-weight:400}
+#matherechner-page .mr-b--op{font-size:25px;font-weight:700}
+#matherechner-page .mr-b--sub{font-size:16px;font-weight:400}
+#matherechner-page .mr-b--eq{grid-column:10;grid-row:3/6;color:#414f5b;font-size:24px;font-weight:700}
+#matherechner-page .mr-b--eq:hover{background:linear-gradient(to bottom,#f0f8ff 0,#d0e8f5 100%)}
+#matherechner-page .mr-b--eq:active{background:#6E4FE0}
+#matherechner-page .mr-b.mr-on{background:linear-gradient(to bottom,#fff 0,#e6e6e6 100%);border-color:#4271a5;color:#414f5b;box-shadow:inset 0 0 0 2px rgba(66,113,165,.28)}
+#matherechner-page .mr-b .mr-sec{display:none;font-size:10px;color:var(--accent)}
+#matherechner-page .mr-inv{position:absolute;right:5px;top:3px;font-size:11px;color:#9aa8b7;text-shadow:1px 1px 0 #fff}
+#matherechner-page .mr-const{position:absolute;right:4px;top:2px;font-size:9px;color:#9aa8b7;text-shadow:1px 1px 0 #fff}
+#matherechner-page .mr-b{position:relative}
+#matherechner-page .mr-b.mr-on .mr-sec{color:#414f5b}
+#matherechner-page #mr-keys.mr-shift .mr-sec{display:block}
+#matherechner-page #mr-keys.mr-shift .mr-pri{display:none}
+#matherechner-page #mr-keys.mr-shift .mr-inv{display:none}
+#matherechner-page #mr-extra{display:grid;grid-template-columns:repeat(10,1fr);position:relative;z-index:8}
+#matherechner-page .mr-opts{display:flex;align-items:center;gap:12px;margin-top:4px;padding:4px 2px 0;font-size:12px;color:#333}
+#matherechner-page .mr-angle{display:flex;gap:12px}
+#matherechner-page .mr-angle label{display:flex;flex-direction:column;align-items:center;cursor:pointer;font-size:13px;line-height:1.2;gap:1px}
+#matherechner-page .mr-angle small{font-size:9px;color:#9AA6B8}
+#matherechner-page .mr-histbtn{flex:1;background:none;border:none;color:#5A6577;font-size:12px;font-family:inherit;cursor:pointer;text-align:center;padding:4px}
+#matherechner-page .mr-histbtn:hover{color:#2A3242}
+#matherechner-page .mr-navbtn{width:26px;height:26px;border:1px solid #D5DBE5;border-radius:6px;background:#fff;color:#5A6577;font-size:11px;cursor:pointer;padding:0}
+#matherechner-page .mr-navbtn:hover{background:#EFEAFE}
+#matherechner-page .mr-navbtn.mr-on{background:var(--accent);color:#fff;border-color:var(--accent)}
+#matherechner-page .mr-hist{display:none;background:#fff;border-top:1px solid #E1E6EE;max-height:170px;overflow-y:auto}
+#matherechner-page .mr-hist.mr-open{display:block}
+#matherechner-page .mr-hist-head{display:flex;justify-content:flex-end;padding:6px 14px;border-bottom:1px solid #EEF1F5}
+#matherechner-page .mr-hist-head a{font-size:11px;color:#9AA6B8;cursor:pointer;text-decoration:none}
+#matherechner-page .mr-hist-head a:hover{color:#C0392B}
+#matherechner-page .mr-hist-item{display:flex;justify-content:space-between;gap:12px;padding:6px 14px;cursor:pointer;font-size:12.5px;border-bottom:1px solid #F4F6F9}
+#matherechner-page .mr-hist-item:hover{background:#F3EFFF}
+#matherechner-page .mr-hist-expr{color:#5A6577;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#matherechner-page .mr-hist-res{color:#2A3242;font-weight:700;flex-shrink:0}
+
+/* ── LIGHT ZONE (all sections after intro paragraph) ── */
+#matherechner-page .mr-light-zone .mr-bg-hero{background:#ffffff}
+#matherechner-page .mr-light-zone .mr-bg-alt{background:#f4f6f8}
+#matherechner-page .mr-light-zone .mr-bg-deep{background:#eef0f4}
+#matherechner-page .mr-light-zone h2,
+#matherechner-page .mr-light-zone h3{color:#1a212e}
+#matherechner-page .mr-light-zone p{color:#4a5568}
+#matherechner-page .mr-light-zone .mr-2col p{color:#4a5568}
+#matherechner-page .mr-light-zone .mr-lead{color:#4a5568}
+#matherechner-page .mr-light-zone .mr-subtle{color:#6b7280}
+#matherechner-page .mr-light-zone .mr-check li{color:#374151}
+#matherechner-page .mr-light-zone .mr-check li::before{background:rgba(127,96,240,.1);border-color:rgba(127,96,240,.35)}
+#matherechner-page .mr-light-zone .mr-card{background:#ffffff;border-color:#e5e7eb;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+#matherechner-page .mr-light-zone .mr-card:hover{border-color:rgba(127,96,240,.4);box-shadow:0 8px 24px rgba(0,0,0,.1);transform:translateY(-5px)}
+#matherechner-page .mr-light-zone .mr-card h3{color:#1a212e}
+#matherechner-page .mr-light-zone .mr-card p{color:#4a5568}
+#matherechner-page .mr-light-zone .mr-card-ic{background:#f3f0ff;border-color:rgba(127,96,240,.2)}
+#matherechner-page .mr-light-zone .mr-card-arrow{background:var(--accent);color:#fff;opacity:1}
+#matherechner-page .mr-light-zone .mr-step{background:#ffffff;border-color:#e5e7eb;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+#matherechner-page .mr-light-zone .mr-step:first-child{background:linear-gradient(160deg,rgba(127,96,240,.1),rgba(127,96,240,.03));border-color:rgba(127,96,240,.25);box-shadow:none}
+#matherechner-page .mr-light-zone .mr-step h3{color:#1a212e}
+#matherechner-page .mr-light-zone .mr-step p{color:#4a5568}
+#matherechner-page .mr-light-zone .mr-step-num{background:var(--accent);color:#fff}
+#matherechner-page .mr-light-zone .mr-faq-item{background:#ffffff;border-color:#b8bfcb}
+#matherechner-page .mr-light-zone .mr-faq-item.open{border-color:rgba(127,96,240,.35)}
+#matherechner-page .mr-light-zone .mr-faq-q{color:#1a212e}
+#matherechner-page .mr-light-zone .mr-faq-q span:last-child{color:#6b7280}
+#matherechner-page .mr-light-zone .mr-faq-a p{color:#4a5568}
+#matherechner-page .mr-light-zone .mr-chip{background:rgba(127,96,240,.08);color:#7F60F0;border-color:rgba(127,96,240,.22)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  #matherechner-page .mr-2col{grid-template-columns:1fr;gap:40px}
+  #matherechner-page .mr-2col--flip .mr-mockwrap{order:-1}
+  #matherechner-page .mr-cards--3{grid-template-columns:1fr}
+  #matherechner-page .mr-cards--2{grid-template-columns:1fr}
+  #matherechner-page .mr-steps{grid-template-columns:1fr}
+  #matherechner-page .mr-footer-grid{grid-template-columns:1fr;gap:36px}
+  #matherechner-page .mr-footer-main{padding:48px 0 40px}
+}
+@media(max-width:760px){
+  #matherechner-page .mr-section{padding:52px 0}
+  #matherechner-page .mr-hero{padding:110px 0 60px}
+}
+@media(max-width:520px){
+  #matherechner-page .mr-container{padding:0 10px}
+  #matherechner-page #mr-calc{max-width:100%;overflow:hidden}
+  #matherechner-page .mr-grid{grid-template-rows:30px repeat(4,40px);gap:4px}
+  #matherechner-page .mr-grid2{gap:4px}
+  #matherechner-page .mr-b{font-size:12px;border-radius:6px}
+  #matherechner-page .mr-b--fn{font-size:9.5px}
+  #matherechner-page .mr-b--op{font-size:14px}
+  #matherechner-page .mr-b--sub{font-size:9.5px}
+  #matherechner-page .mr-b--eq{font-size:19px}
+  #matherechner-page .mr-result{font-size:22px}
+  #matherechner-page .mr-panel{padding:10px 8px 6px}
+}
+@media(prefers-reduced-motion:reduce){
+  #matherechner-page *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<div id="matherechner-page">
+
+<!-- HEADER -->
+<header class="mr-header">
+  <div class="mr-container">
+    <a class="mr-logo" href="/">
+      <img src="/images/Matherechnerlogo.webp" alt="Matherechner Logo" style="height:65px;width:auto;display:block;" loading="eager">
+    </a>
+    <nav class="mr-nav" id="mr-nav" aria-label="Hauptnavigation">
+      <a href="/" class="active">Matherechner</a>
+      <a href="/ueber-uns/">Über uns</a>
+      <a href="/kontakt/">Kontakt</a>
+    </nav>
+    <button class="mr-burger" id="mr-burger" aria-label="Menü öffnen" aria-expanded="false">&#9776;</button>
+  </div>
+</header>
+
+<!-- HERO / RECHNER -->
+<section class="mr-hero" id="rechner">
+  <div class="mr-container">
+    <h1>Matherechner kostenlos online nutzen</h1>
+
+    <!-- CALCULATOR — static HTML, crawlable without JS -->
+    <div id="mr-calc">
+      <div class="mr-screen">
+        <div class="mr-formula" id="mr-formula"></div>
+        <div class="mr-steps" id="mr-steps"></div>
+        <div class="mr-result" id="mr-result"></div>
+        <div class="mr-alt" id="mr-alt"></div>
+        <div class="mr-error" id="mr-error"></div>
+      </div>
+      <div class="mr-panel">
+        <div class="mr-inputrow">
+          <div class="mr-hint" id="mr-hint"></div>
+          <input id="mr-input" type="text" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="" aria-label="Ausdruck eingeben">
+        </div>
+
+        <div class="mr-grid" id="mr-keys">
+          <!-- row 1: sub commands -->
+          <button class="mr-b mr-b--sub" id="mr-shift" title="2nd / inverse functions">2nd</button>
+          <button class="mr-b mr-b--sub" data-ins="π" title="Pi">&pi;</button>
+          <button class="mr-b mr-b--sub" id="mr-ei"><span class="mr-pri">e</span><span class="mr-sec">i</span><span class="mr-inv">i</span></button>
+          <button class="mr-b mr-b--sub" data-ins="ans" title="Answer">Ans</button>
+          <button class="mr-b mr-b--sub" data-ins="x" title="Variable x">x</button>
+          <button class="mr-b mr-b--sub" data-ins="(" title="Open parenthesis">(</button>
+          <button class="mr-b mr-b--sub" data-ins="," title="Comma">,</button>
+          <button class="mr-b mr-b--sub" data-ins=")" title="Close parenthesis">)</button>
+          <button class="mr-b mr-b--sub" data-act="swap" title="Swap with last expression">&#8644;</button>
+          <button class="mr-b mr-b--sub" data-act="backspace" title="Backspace">&#9003;</button>
+          <!-- row 2 -->
+          <button class="mr-b mr-b--fn" data-fn="sin"><span class="mr-pri">sin</span><span class="mr-sec">asin</span><span class="mr-inv">-1</span></button>
+          <button class="mr-b mr-b--fn" data-fn="sinh"><span class="mr-pri">sinh</span><span class="mr-sec">asinh</span><span class="mr-inv">-1</span></button>
+          <button class="mr-b mr-b--fn" data-fn="cot"><span class="mr-pri">cot</span><span class="mr-sec">acot</span><span class="mr-inv">-1</span></button>
+          <button class="mr-b mr-b--fn" data-fn="sqrty" title="y-th root of x">&#8319;&radic;x</button>
+          <button class="mr-b mr-b--fn" data-ins="^" title="x to the power y">x&#690;</button>
+          <button class="mr-b" data-ins="7">7</button>
+          <button class="mr-b" data-ins="8">8</button>
+          <button class="mr-b" data-ins="9">9</button>
+          <button class="mr-b mr-b--op" id="mr-div"><span class="mr-pri">&divide;</span><span class="mr-sec">mod</span></button>
+          <button class="mr-b mr-b--op" data-act="clear" title="Clear">C</button>
+          <!-- row 3 -->
+          <button class="mr-b mr-b--fn" data-fn="cos"><span class="mr-pri">cos</span><span class="mr-sec">acos</span><span class="mr-inv">-1</span></button>
+          <button class="mr-b mr-b--fn" data-fn="cosh"><span class="mr-pri">cosh</span><span class="mr-sec">acosh</span><span class="mr-inv">-1</span></button>
+          <button class="mr-b mr-b--fn" data-fn="sec"><span class="mr-pri">sec</span><span class="mr-sec">asec</span><span class="mr-inv">-1</span></button>
+          <button class="mr-b mr-b--fn" data-fn="sqrt3" title="Cube root">&#179;&radic;x</button>
+          <button class="mr-b mr-b--fn" data-ins="^3" title="x cubed">x&#179;</button>
+          <button class="mr-b" data-ins="4">4</button>
+          <button class="mr-b" data-ins="5">5</button>
+          <button class="mr-b" data-ins="6">6</button>
+          <button class="mr-b mr-b--op" id="mr-mul"><span class="mr-pri">&times;</span><span class="mr-sec">#</span></button>
+          <button class="mr-b mr-b--eq" data-act="equals" title="Calculate">=</button>
+          <!-- row 4 -->
+          <button class="mr-b mr-b--fn" data-fn="tan"><span class="mr-pri">tan</span><span class="mr-sec">atan</span><span class="mr-inv">-1</span></button>
+          <button class="mr-b mr-b--fn" data-fn="tanh"><span class="mr-pri">tanh</span><span class="mr-sec">atanh</span><span class="mr-inv">-1</span></button>
+          <button class="mr-b mr-b--fn" data-fn="csc"><span class="mr-pri">csc</span><span class="mr-sec">acsc</span><span class="mr-inv">-1</span></button>
+          <button class="mr-b mr-b--fn" data-fn="sqrt" title="Square root">&radic;x</button>
+          <button class="mr-b mr-b--fn" data-ins="^2" title="x squared">x&#178;</button>
+          <button class="mr-b" data-ins="1">1</button>
+          <button class="mr-b" data-ins="2">2</button>
+          <button class="mr-b" data-ins="3">3</button>
+          <button class="mr-b mr-b--op" data-ins="-">&minus;</button>
+          <!-- row 5 -->
+          <button class="mr-b mr-b--fn" data-fn="nCr" title="Combinations">nCr</button>
+          <button class="mr-b mr-b--fn" data-fn="nPr" title="Permutations">nPr</button>
+          <button class="mr-b" id="mr-pct"><span class="mr-pri">%</span><span class="mr-sec">!</span></button>
+          <button class="mr-b mr-b--fn" data-fn="log" title="Logarithm base 10">log</button>
+          <button class="mr-b mr-b--fn" data-fn="pow10" title="10 to the power x">10&#739;</button>
+          <button class="mr-b" data-ins="0">0</button>
+          <button class="mr-b" data-act="negate" title="Negate">&plusmn;</button>
+          <button class="mr-b" data-ins=".">.</button>
+          <button class="mr-b mr-b--op" data-ins="+">+</button>
+        </div>
+
+        <div class="mr-grid2" id="mr-extra">
+          <button class="mr-b mr-b--fn" data-fn="asin">asin</button>
+          <button class="mr-b mr-b--fn" data-fn="acos">acos</button>
+          <button class="mr-b mr-b--fn" data-fn="atan">atan</button>
+          <button class="mr-b mr-b--fn" data-fn="ln" title="Natural logarithm">ln</button>
+          <button class="mr-b mr-b--fn" data-fn="exp" title="e to the power x">e&#739;</button>
+          <button class="mr-b mr-b--fn" data-fn="asinh">asinh</button>
+          <button class="mr-b mr-b--fn" data-fn="acosh">acosh</button>
+          <button class="mr-b mr-b--fn" data-fn="atanh">atanh</button>
+          <button class="mr-b mr-b--fn" data-fn="log2" title="Logarithm base 2">log&#8322;</button>
+          <button class="mr-b mr-b--fn" data-fn="pow2" title="2 to the power x">2&#739;</button>
+          <button class="mr-b mr-b--fn" data-fn="acot">acot</button>
+          <button class="mr-b mr-b--fn" data-fn="asec">asec</button>
+          <button class="mr-b mr-b--fn" data-fn="acsc">acsc</button>
+          <button class="mr-b mr-b--fn" data-fn="abs" title="Absolute value">|x|</button>
+          <button class="mr-b mr-b--fn" data-ins="!" title="Factorial">x!</button>
+          <button class="mr-b mr-b--fn" data-ins="#" title="Power of 10">#</button>
+          <button class="mr-b mr-b--fn" data-ins=" mod " title="Modulo">mod</button>
+          <button class="mr-b mr-b--fn" data-ins="&infin;" title="Infinity">&infin;</button>
+          <button class="mr-b mr-b--fn" data-fn="floor" title="Round down">&#8970;x&#8971;</button>
+          <button class="mr-b mr-b--fn" data-fn="ceil" title="Round up">&#8968;x&#8969;</button>
+        </div>
+
+        <div class="mr-opts">
+          <div class="mr-angle">
+            <label><span><input type="radio" name="mr-angle" value="deg" checked> Deg</span><small>360&deg;</small></label>
+            <label><span><input type="radio" name="mr-angle" value="rad"> wheel</span><small>2&pi;</small></label>
+          </div>
+          <button class="mr-histbtn" id="mr-histbtn">-- Verlauf -- &#9662;</button>
+          <button class="mr-navbtn" id="mr-up" title="Vorheriger Eintrag">&#9650;</button>
+          <button class="mr-navbtn" id="mr-down" title="Nächster Eintrag">&#9660;</button>
+        </div>
+      </div>
+
+      <div class="mr-hist" id="mr-hist">
+        <div class="mr-hist-head"><a id="mr-hist-clear">Verlauf löschen</a></div>
+        <div id="mr-hist-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="mr-section mr-bg-alt">
+  <div class="mr-container mr-intro">
+    <p>Egal, ob Sie bei einer Hausaufgabe nicht weiterkommen, im Geschäft einen Rabatt überprüfen müssen oder sich auf eine Prüfung vorbereiten möchten – ein Matherechner kann Ihnen Zeit sparen und Ärger ersparen. Im Gegensatz zu einem herkömmlichen Taschenrechner läuft ein Matherechner direkt in Ihrem Browser und bewältigt weitaus komplexere Aufgaben als einfache Rechenaufgaben. Er löst Gleichungen, vereinfacht Brüche, berechnet Prozentsätze und zeigt Ihnen die vollständige Lösung auf Ihrem Bildschirm an.</p>
+    <p>Sie müssen keine App installieren, sich nirgendwo registrieren oder eine Gebühr zahlen. Das macht ihn zum perfekten Werkzeug für Studierende, Lehrkräfte, Eltern, die bei den Hausaufgaben helfen, und Fachleute, die schnelle, zuverlässige Ergebnisse benötigen. Im Folgenden erklären wir, was dieser Rechner leisten kann, welche Funktionen am wichtigsten sind und wie Sie die besten Ergebnisse damit erzielen.</p>
+  </div>
+</section>
+
+<div class="mr-light-zone">
+<!-- WHAT IS -->
+<section class="mr-section mr-bg-hero">
+  <div class="mr-container mr-2col">
+    <div>
+      <h2 class="mr-h2 mr-h2--left">Was ist ein <span class="mr-accent">Matherechner</span> und wie funktioniert er?</h2>
+      <p>Ein Matherechner ist ein Online-Tool, das mathematische Berechnungen direkt in Ihrem Webbrowser durchführt. Sie geben eine Aufgabe wie eine Gleichung oder einen Bruch ein, und das Tool berechnet das Ergebnis sofort. Hinter jeder Eingabe steht mathematische Logik, die Ihre Eingabe versteht, die richtigen Regeln und Formeln anwendet und die richtige Antwort in Echtzeit liefert.</p>
+      <p>Er löst nicht nur einfache mathematische Aufgaben, sondern geht noch einen Schritt weiter und berechnet komplexe Funktionen, die ein gewöhnlicher Taschenrechner nicht beherrscht. Zu den Funktionen gehören unter anderem:</p>
+      <ul class="mr-check">
+        <li>Grundrechenarten, Potenzen und Wurzeln</li>
+        <li>Prozentsätze, Brüche und Einheitenumrechnungen (cm in mm usw.)</li>
+        <li>Gleichungen und Gleichungssysteme</li>
+        <li>Geometrie (Fläche, Umfang, Volumen)</li>
+        <li>Zinsberechnungen, Trigonometrie und fortgeschrittenere Themen</li>
+      </ul>
+    </div>
+    <div class="mr-mockwrap">
+      <img class="mr-section-img" src="/images/Matherechner1.webp" alt="Matherechner Online-Rechner Vorschau" loading="lazy" width="530" height="345">
+    </div>
+  </div>
+</section>
+
+<!-- ONLINE VS APP -->
+<section class="mr-section mr-bg-deep">
+  <div class="mr-container mr-2col mr-2col--flip">
+    <div class="mr-mockwrap">
+      <img class="mr-section-img" src="/images/Matherechner2.webp" alt="Matherechner im Browser ohne App" loading="lazy" width="530" height="345">
+    </div>
+    <div>
+      <h2 class="mr-h2 mr-h2--left">Nutzung eines Online-Rechners im <span class="mr-accent">Vergleich zur App</span></h2>
+      <p>Die meisten Menschen nutzen ihn online, da dies viele Vorteile bietet. Er funktioniert problemlos im Browser, und es ist nicht notwendig, zusätzliche Software, Apps oder Erweiterungen herunterzuladen oder zu installieren. Man öffnet einfach die Website, gibt die Aufgabe ein und erhält das Ergebnis. Er ist mit allen Geräten wie Laptops, Tablets oder Smartphones kompatibel und immer auf dem neuesten Stand.</p>
+      <p>In bestimmten Situationen kann eine App dennoch sinnvoll sein, insbesondere wenn man offline darauf zugreifen möchte. Für die meisten alltäglichen Anwendungsfälle ist jedoch die Webversion die nützlichere Wahl. Sie ist sofort zugänglich, erfordert keine Anmeldungen, Registrierungen oder Konten und bleibt auf jedem Gerät gleich.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PERCENTAGES & FRACTIONS -->
+<section class="mr-section mr-bg-alt">
+  <div class="mr-container">
+    <h2 class="mr-h2">Prozentsätze, Brüche und <span class="mr-accent">grundlegende Berechnungen</span></h2>
+    <p class="mr-lead">Prozentsätze und Brüche sind die beiden Themen, bei denen man in der Schule und im Alltag sofort zum Taschenrechner greift.</p>
+    <div class="mr-cards mr-cards--2">
+      <div class="mr-card">
+        <span class="mr-card-arrow">&#8599;</span>
+        <div class="mr-card-ic">%</div>
+        <h3>Prozentsätze</h3>
+        <p>Eine Prozentfunktion beantwortet Fragen wie: Wie viel beträgt 19&nbsp;% Mehrwertsteuer auf 250&nbsp;Euro? Wie hoch wäre der Preis nach einem pauschalen Rabatt von 48&nbsp;%? Man gibt einfach die Werte ein, und das Tool liefert sofort das Ergebnis, ohne dass man sich die Formel für den Basiswert, den Prozentwert und den Prozentsatz merken muss.</p>
+      </div>
+      <div class="mr-card">
+        <span class="mr-card-arrow">&#8599;</span>
+        <div class="mr-card-ic">&frac12;</div>
+        <h3>Brüche</h3>
+        <p>Auch Brüche sind wichtig und kommen bei Berechnungen häufig vor. Eine „Brüche"-Funktion kann Brüche addieren, subtrahieren, multiplizieren und dividieren, den kleinsten gemeinsamen Nenner ermitteln und das Ergebnis vereinfachen. Selbst bei einfachen Berechnungen wird der gesamte Lösungsweg angezeigt, sodass Sie verstehen, warum das Ergebnis richtig ist, anstatt nur eine Zahl abzuschreiben.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUATIONS -->
+<section class="mr-section mr-bg-hero">
+  <div class="mr-container">
+    <h2 class="mr-h2">Gleichungen lösen mit einer <span class="mr-accent">vollständigen Schritt-für-Schritt-Lösung</span></h2>
+    <div class="mr-narrow">
+      <p>Beim Lösen von Gleichungen zeigt ein Online-Rechner erst richtig, was er kann. In Matherechner bearbeitet die Gleichungs-Funktion lineare Gleichungen, quadratische Gleichungen (einschließlich der pq-Formel und der quadratischen Formel) und sogar Gleichungssysteme mit mehreren Variablen. Du gibst beispielsweise <span class="mr-chip">2x + 6 = 14</span> oder <span class="mr-chip">x&#178; &minus; 5x + 6 = 0</span> ein, und das Tool ermittelt alle Lösungen.</p>
+      <p>Ein guter Lösungsweg gliedert die Berechnung in einzelne, nachvollziehbare Schritte. Welcher Term wurde auf die andere Seite verschoben, und welche Rechenoperation wurde angewendet? Anstatt nur „x&nbsp;=&nbsp;4" zu sehen, siehst du, wie die Gleichung Zeile für Zeile umgewandelt wurde, bis die Variable allein stand.</p>
+      <p>Das hilft dir auch beim Lernen von Mathematik, nicht nur beim Erledigen deiner Aufgaben. Wenn du dem Lösungsweg folgst, ihn mit deinem eigenen Versuch vergleichst und die genaue Stelle findest, an der du einen Fehler gemacht hast, funktioniert der Rechner wie ein geduldiger Nachhilfelehrer.</p>
+    </div>
+    <div class="mr-steps">
+      <div class="mr-step"><div class="mr-step-num">1</div><h3>Gleichung eingeben</h3><p>Gib die Gleichung genau so ein, wie sie in deiner Hausaufgabe oder im Lehrbuch steht, inklusive der Variablen.</p></div>
+      <div class="mr-step"><div class="mr-step-num">2</div><h3>Jeden Schritt sehen</h3><p>Verfolge die Lösung Zeile für Zeile und sieh, welcher Term verschoben und welche Operation angewendet wurde.</p></div>
+      <div class="mr-step"><div class="mr-step-num">3</div><h3>Ergebnis verstehen</h3><p>Vergleiche den Lösungsweg mit deinem eigenen Ansatz und finde genau die Stelle, an der ein Fehler passiert ist.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIAL FUNCTIONS -->
+<section class="mr-section mr-bg-deep">
+  <div class="mr-container">
+    <h2 class="mr-h2">Sonderfunktionen: <span class="mr-accent">Pi, Modulo und cm-Berechnungen</span></h2>
+    <p class="mr-lead">Ein guter Taschenrechner deckt mehrere Sonderfunktionen ab, die immer wieder vorkommen und wichtig sind.</p>
+    <div class="mr-cards mr-cards--3">
+      <div class="mr-card">
+        <span class="mr-card-arrow">&#8599;</span>
+        <div class="mr-card-ic">&pi;</div>
+        <h3>Pi-Berechnungen</h3>
+        <p>Eine Pi-Funktion ist für alles, was mit Kreisen zu tun hat, unverzichtbar. Wenn du den Umfang eines Kreises mit einem Radius von 5&nbsp;cm berechnen möchtest, lautet die Formel <span class="mr-chip">U = 2 &middot; &pi; &middot; r</span>, was ungefähr 31,42&nbsp;cm ergibt. Der Taschenrechner speichert die Konstante &pi; mit hoher Genauigkeit, sodass du 3,14159 nie von Hand eingeben musst.</p>
+      </div>
+      <div class="mr-card">
+        <span class="mr-card-arrow">&#8599;</span>
+        <div class="mr-card-ic">mod</div>
+        <h3>Modulo-Berechnungen</h3>
+        <p>Mit der Modulo-Funktion kannst du den Rest einer Division ermitteln. Zum Beispiel ist <span class="mr-chip">17 mod 5 = 2</span>, da bei der Division von 17 durch 5 ein Rest von 2 übrig bleibt.</p>
+      </div>
+      <div class="mr-card">
+        <span class="mr-card-arrow">&#8599;</span>
+        <div class="mr-card-ic">cm</div>
+        <h3>Berechnungen in cm</h3>
+        <p>Er hilft sogar bei Längen, Flächen und Umrechnungen. Du kannst <span class="mr-chip">2,5 m &rarr; 250 cm</span> in einem einzigen Schritt umrechnen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEREST -->
+<section class="mr-section mr-bg-alt">
+  <div class="mr-container">
+    <h2 class="mr-h2 mr-h2--left">Matherechner für <span class="mr-accent">Zins- und prozentuale Geldaufgaben</span></h2>
+    <p>Eine der praktischsten Anwendungen eines Online-Rechners ist die Zinsberechnung. Wir können einfache Zinsen, Zinseszinsen und prozentuale Geldaufgaben wie Rabatte und Preiserhöhungen berechnen.</p>
+    <p>Die manuelle Berechnung von Zinseszinsen oder anderen komplexen Aufgaben ist nicht fehlerfrei, insbesondere bei Zinseszinsen über viele Jahre hinweg. Der Rechner wendet sofort die richtige Formel an und zeigt den Lösungsweg an – nützlich sowohl für Zinsaufgaben in der Schule als auch zur Überprüfung realer Sparangebote.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="mr-section mr-bg-hero" id="faq">
+  <div class="mr-container">
+    <h2 class="mr-h2">Häufig gestellte <span class="mr-accent">Fragen</span></h2>
+    <p class="mr-subtle">Alles, was Sie über den Matherechner wissen müssen</p>
+    <div class="mr-faq">
+      <div class="mr-faq-item">
+        <button class="mr-faq-q"><span>Ist der Matherechner kostenlos nutzbar?</span><span>&#9662;</span></button>
+        <div class="mr-faq-a"><p>Ja. Die überwiegende Mehrheit der Online-Mathe-Rechner ist völlig kostenlos. Sie benötigen keine Registrierung, kein Abonnement und keinen Download. Öffnen Sie einfach die Website in Ihrem Browser und nutzen Sie sie kostenlos.</p></div>
+      </div>
+      <div class="mr-faq-item">
+        <button class="mr-faq-q"><span>Kann er Lösungen für komplexe mathematische Gleichungen liefern?</span><span>&#9662;</span></button>
+        <div class="mr-faq-a"><p>Ja. Moderne Tools bewältigen quadratische Gleichungen, Gleichungssysteme, Ableitungen, Integrale und Matrixberechnungen mit mehreren Variablen.</p></div>
+      </div>
+      <div class="mr-faq-item">
+        <button class="mr-faq-q"><span>Reicht die Website aus oder müssen wir zusätzliche Software oder eine App installieren?</span><span>&#9662;</span></button>
+        <div class="mr-faq-a"><p>Für die meisten Nutzer reicht die Website aus. Sie funktioniert auf jedem Gerät ohne Installation.</p></div>
+      </div>
+      <div class="mr-faq-item">
+        <button class="mr-faq-q"><span>Zeigt der Rechner den vollständigen Lösungsweg an oder nur das Endergebnis?</span><span>&#9662;</span></button>
+        <div class="mr-faq-a"><p>Sie erhalten das Ergebnis sofort, und jeder Zwischenschritt eignet sich ideal, um Ihre eigene Arbeit zu überprüfen und zu verstehen, wo ein Fehler passiert ist.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="mr-section mr-bg-deep">
+  <div class="mr-container mr-narrow" style="text-align:center">
+    <h2 class="mr-h2">Fazit</h2>
+    <p style="margin-top:20px">Ein Matherechner ist weit mehr als ein digitaler Taschenrechner. Er löst Prozentrechnungen, Brüche, Gleichungen, Zinsaufgaben und Geometrieaufgaben in Sekundenschnelle, zeigt vollständige Schritt-für-Schritt-Lösungen an und funktioniert kostenlos auf jedem Gerät, ohne dass ein Download erforderlich ist. Schüler nutzen ihn, um Hausaufgaben zu verstehen, Studenten verlassen sich bei anspruchsvollen Berechnungen darauf, und Alltagsnutzer überprüfen damit Rabatte und Zinssätze.</p>
+  </div>
+</section>
+
+</div><!-- /.mr-light-zone -->
+
+<!-- FOOTER -->
+<footer class="mr-footer">
+  <div class="mr-footer-main">
+    <div class="mr-container">
+      <div class="mr-footer-grid">
+        <div class="mr-footer-about">
+          <a class="mr-logo" href="/"><img src="/images/Matherechnerlogo.webp" alt="Matherechner Logo" style="height:70px;width:auto;display:block;" loading="eager"></a>
+          <p>Prozentsätze, Brüche, Gleichungen und Zinsaufgaben in Sekunden lösen &ndash; kostenlos, im Browser, auf jedem Gerät.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="mr-footer-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#rechner">Rechner</a></li>
+            <li><a href="/ueber-uns/">Über uns</a></li>
+            <li><a href="/kontakt/">Kontakt</a></li>
+          </ul>
+        </div>
+        <div class="mr-footer-legal">
+          <h4>Rechtliches</h4>
+          <ul class="mr-footer-links">
+            <li><a href="/impressum/">Impressum</a></li>
+            <li><a href="/datenschutz/">Datenschutz</a></li>
+            <li><a href="/nutzungsbedingungen/">Nutzungsbedingungen</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mr-footer-bottom">
+    &copy; <span id="copy-yr"></span> Matherechner. Alle Rechte vorbehalten.
+  </div>
+</footer>
+
+</div><!-- /#matherechner-page -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.2/math.min.js" defer></script>
+<script defer src="https://www.googletagmanager.com/gtag/js?id={{GA4_MEASUREMENT_ID}}"></script>
+<script>
+(function(){
+'use strict';
+
+/* copyright year */
+var el=document.getElementById('copy-yr');
+if(el)el.textContent=new Date().getFullYear();
+
+/* mobile nav burger */
+var burger=document.getElementById('mr-burger'),mnav=document.getElementById('mr-nav');
+if(burger&&mnav){burger.addEventListener('click',function(){var open=mnav.classList.toggle('mr-open');burger.setAttribute('aria-expanded',open);});}
+
+/* FAQ accordion */
+document.querySelectorAll('#matherechner-page .mr-faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item=q.parentElement,a=item.querySelector('.mr-faq-a'),open=item.classList.contains('open');
+    document.querySelectorAll('#matherechner-page .mr-faq-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.mr-faq-a').style.maxHeight='0';});
+    if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
+});
+
+/* GA4 */
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','{{GA4_MEASUREMENT_ID}}');
+
+/* Clarity */
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','{{CLARITY_PROJECT_ID}}');
+
+/* ===== CALCULATOR ENGINE (enhanced) ===== */
+var angleMode='deg',shiftOn=false,progOn=false,histOpen=false,extraOpen=false;
+var ans=0,lastExpr='',histIndex=-1,lastSteps=null;
+var HIST_KEY='mr_calc_hist',MAX_HIST=60;
+var mathScope={};
+
+var $in=document.getElementById('mr-input'),$hint=document.getElementById('mr-hint'),
+    $formula=document.getElementById('mr-formula'),$result=document.getElementById('mr-result'),
+    $steps=document.getElementById('mr-steps'),$alt=document.getElementById('mr-alt'),
+    $error=document.getElementById('mr-error'),$keys=document.getElementById('mr-keys'),
+    $hist=document.getElementById('mr-hist'),$histList=document.getElementById('mr-hist-list'),
+    $shift=document.getElementById('mr-shift');
+
+/* ── Math.js setup ── */
+function setupMath(){
+  var M={sin:math.sin,cos:math.cos,tan:math.tan,asin:math.asin,acos:math.acos,atan:math.atan,
+         sinh:math.sinh,cosh:math.cosh,tanh:math.tanh,asinh:math.asinh,acosh:math.acosh,atanh:math.atanh};
+  function toR(x){return angleMode==='deg'?math.multiply(x,Math.PI/180):x;}
+  function frR(x){return angleMode==='deg'?math.multiply(x,180/Math.PI):x;}
+  math.import({
+    sin:function(x){return M.sin(toR(x));},cos:function(x){return M.cos(toR(x));},tan:function(x){return M.tan(toR(x));},
+    asin:function(x){return frR(M.asin(x));},acos:function(x){return frR(M.acos(x));},atan:function(x){return frR(M.atan(x));},
+    sec:function(x){return math.divide(1,M.cos(toR(x)));},csc:function(x){return math.divide(1,M.sin(toR(x)));},cot:function(x){return math.divide(1,M.tan(toR(x)));},
+    asec:function(x){return frR(M.acos(math.divide(1,x)));},acsc:function(x){return frR(M.asin(math.divide(1,x)));},acot:function(x){return frR(M.atan(math.divide(1,x)));},
+    sinh:M.sinh,cosh:M.cosh,tanh:M.tanh,asinh:M.asinh,acosh:M.acosh,atanh:M.atanh,
+    ln:function(x){return math.log(x);},lg2:function(x){return math.log2(x);},
+    sqrt3:function(x){return math.cbrt(x);},sqrty:function(x,n){return math.nthRoot(x,n);},
+    nCr:function(n,r){return math.combinations(n,r);},nPr:function(n,r){return math.permutations(n,r);},
+    pow10:function(x){return math.pow(10,x);},pow2:function(x){return math.pow(2,x);},
+    bitor:function(a,b){return math.bitOr(a,b);},bitand:function(a,b){return math.bitAnd(a,b);},bitxor:function(a,b){return math.bitXor(a,b);},
+    rol:function(x,n){n=n||1;x=x>>>0;n=n%32;return((x<<n)|(x>>>(32-n)))>>>0;},
+    ror:function(x,n){n=n||1;x=x>>>0;n=n%32;return((x>>>n)|(x<<(32-n)))>>>0;}
+  },{override:true});
+}
+
+/* ── Preprocessor: translate input → math.js, with % phrases & units ── */
+function preprocess(expr){
+  var e=expr.trim();
+  e=e.replace(/π|Ï€/g,'pi').replace(/∞/g,'Infinity');
+  e=e.replace(/³√\s*\(/g,'cbrt(').replace(/√\s*\(/g,'sqrt(');
+  e=e.replace(/⌊\s*\(/g,'floor(').replace(/⌈\s*\(/g,'ceil(');
+  e=e.replace(/\b(sin|cos|tan|cot|sec|csc|asin|acos|atan|sinh|cosh|tanh|asinh|acosh|atanh|log|ln|lg2)\s*(-?\d+(?:\.\d+)?|π|pi)\b/gi,function(m,fn,n){return fn+'('+n+')';});
+  /* German percentage phrases — must come before other replacements */
+  /* "X% von Y"  →  X/100 * Y */
+  e=e.replace(/(\d+(?:[.,]\d+)?)\s*%\s*von\s*(\d+(?:[.,]\d+)?)/gi,function(m,p,b){
+    return '('+p.replace(',','.')+'/100*'+b.replace(',','.')+')';
+  });
+  /* "Y + X%"  →  Y*(1 + X/100) */
+  e=e.replace(/(\d+(?:\.\d+)?)\s*\+\s*(\d+(?:\.\d+)?)\s*%(?!\d)/g,function(m,y,x){
+    return '('+y+'*(1+'+x+'/100))';
+  });
+  /* "Y - X%"  →  Y*(1 - X/100) */
+  e=e.replace(/(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*%(?!\d)/g,function(m,y,x){
+    return '('+y+'*(1-'+x+'/100))';
+  });
+  /* MwSt shortcut: "Y MwSt" or "Y + MwSt" → Y * 1.19 */
+  e=e.replace(/(\d+(?:\.\d+)?)\s*(?:\+\s*)?MwSt\b/gi,function(m,y){return '('+y+'*1.19)';});
+  /* implicit multiply */
+  e=e.replace(/(\d)(pi|e\b)/g,'$1*$2');
+  /* function names */
+  e=e.replace(/\blog\s*\(/g,'log10(');e=e.replace(/\bln\s*\(/g,'log(');e=e.replace(/\blg2\s*\(/g,'log2(');
+  e=e.replace(/\bsqrt3\s*\(/g,'cbrt(');e=e.replace(/\bsqrty\s*\(/g,'nthRoot(');
+  e=e.replace(/\bnCr\s*\(/g,'combinations(');e=e.replace(/\bnPr\s*\(/g,'permutations(');
+  /* bitwise / misc */
+  e=e.replace(/\bor\b/g,'|');e=e.replace(/\band\b/g,'&');e=e.replace(/\bxor\b/g,'^|');
+  e=e.replace(/\blsh\b/g,'<<');e=e.replace(/\brsh\b/g,'>>');
+  e=e.replace(/\bans\b/g,'('+String(ans)+')');e=e.replace(/\bmod\b/g,'%');e=e.replace(/#/g,'*10^');
+  e=balanceParens(e);
+  return e;
+}
+function balanceParens(e){var open=0;for(var i=0;i<e.length;i++){if(e.charAt(i)==='(')open++;else if(e.charAt(i)===')'&&open>0)open--;}while(open-- >0)e+=')';return e;}
+
+/* ── Helpers ── */
+function fmtNum(n){
+  if(typeof n!=='number')return String(n);
+  if(!isFinite(n))return n>0?'∞':'-∞';
+  if(Number.isInteger(n)&&Math.abs(n)<1e15)return String(n);
+  return String(parseFloat(n.toPrecision(10)));
+}
+function tryFraction(r){
+  if(typeof r!=='number'||!isFinite(r)||Number.isInteger(r))return null;
+  try{var f=math.fraction(r);if(f.d>1&&f.d<=999)return (f.s<0?'-':'')+f.n+'/'+f.d;}catch(e){}
+  return null;
+}
+
+/* ── Step-by-step equation solver ── */
+function generateSteps(lhsStr,rhsStr){
+  rhsStr=(rhsStr||'0').trim();lhsStr=lhsStr.trim();
+  try{
+    var lhsP=preprocess(lhsStr),rhsP=preprocess(rhsStr);
+    var simp=math.simplify(math.parse('('+lhsP+')-('+rhsP+')'));
+    var simpStr=simp.toString();
+    if(!/\bx\b/.test(simpStr))return null;
+    var d1=math.derivative(simp,'x'),d2=math.derivative(d1,'x');
+    var a2=0,a1,a0;
+    try{a2=math.evaluate(d2.toString(),{x:0})/2;}catch(e){a2=0;}
+    try{a1=math.evaluate(d1.toString(),{x:0});}catch(e){return null;}
+    try{a0=math.evaluate(simpStr,{x:0});}catch(e){return null;}
+    if(typeof a1!=='number'||typeof a0!=='number')return null;
+    var steps=['Gleichung:  '+lhsStr+' = '+rhsStr];
+    if(Math.abs(a2)>1e-10){
+      /* ── Quadratic ── */
+      var a=a2,b=a1,c=a0;
+      steps.push('Standardform:  '+fmtNum(a)+'x² + ('+fmtNum(b)+')x + ('+fmtNum(c)+') = 0');
+      if(Math.abs(a-1)<1e-9){
+        /* pq-Formel */
+        var p=b,q=c,hP=p/2,disc=hP*hP-q;
+        steps.push('pq-Formel:  p = '+fmtNum(p)+',  q = '+fmtNum(q));
+        steps.push('Diskriminante:  (p/2)² − q = '+fmtNum(hP)+'² − ('+fmtNum(q)+') = '+fmtNum(disc));
+        if(disc<0){steps.push('✓ Keine reellen Lösungen  (D < 0)');return{steps:steps,result:'Keine reellen Lösungen'};}
+        var sq=Math.sqrt(disc),x1=-hP+sq,x2=-hP-sq;
+        if(Math.abs(x1-x2)<1e-9){steps.push('✓ x = '+fmtNum(x1)+'  (doppelte Lösung)');return{steps:steps,result:'x = '+fmtNum(x1)};}
+        steps.push('✓ x₁ = '+fmtNum(x1)+'     x₂ = '+fmtNum(x2));
+        return{steps:steps,result:'x₁ = '+fmtNum(x1)+'   x₂ = '+fmtNum(x2)};
+      } else {
+        /* abc-Formel */
+        var D=b*b-4*a*c;
+        steps.push('abc-Formel:  D = b²−4ac = '+fmtNum(b)+'²−4·'+fmtNum(a)+'·'+fmtNum(c)+' = '+fmtNum(D));
+        if(D<0){steps.push('✓ Keine reellen Lösungen  (D < 0)');return{steps:steps,result:'Keine reellen Lösungen'};}
+        var sq=Math.sqrt(D),x1=(-b+sq)/(2*a),x2=(-b-sq)/(2*a);
+        if(Math.abs(x1-x2)<1e-9){steps.push('✓ x = '+fmtNum(x1)+'  (doppelte Lösung)');return{steps:steps,result:'x = '+fmtNum(x1)};}
+        steps.push('✓ x₁ = '+fmtNum(x1)+'     x₂ = '+fmtNum(x2));
+        return{steps:steps,result:'x₁ = '+fmtNum(x1)+'   x₂ = '+fmtNum(x2)};
+      }
+    } else if(Math.abs(a1)>1e-10){
+      /* ── Linear ── */
+      var a=a1,b=a0;
+      var aS=(Math.abs(a-1)<1e-9)?'x':(Math.abs(a+1)<1e-9)?'-x':fmtNum(a)+'x';
+      steps.push('Lineare Form:  '+aS+(b!==0?' + ('+fmtNum(b)+')'  :'')+' = 0');
+      if(b!==0)steps.push('Umformen:  '+aS+' = '+fmtNum(-b));
+      var x=-b/a;
+      if(Math.abs(a-1)>1e-9&&Math.abs(a+1)>1e-9)steps.push('Dividieren:  x = '+fmtNum(-b)+' ÷ '+fmtNum(a));
+      steps.push('✓ x = '+fmtNum(x));
+      return{steps:steps,result:'x = '+fmtNum(x)};
+    }
+    return null;
+  }catch(e){return null;}
+}
+
+/* ── Special forms: sum, prod, diff, int, equations ── */
+function evalSimple(s){try{return math.evaluate(preprocess(String(s).trim()));}catch(e){return s;}}
+function trySpecial(expr){
+  var m;
+  m=expr.match(/^sum\s*\((.+),\s*(\w+)\s*=\s*(.+?)\.\.\s*(.+)\)$/i);
+  if(m){var t=0,a=parseFloat(evalSimple(m[3])),b=parseFloat(evalSimple(m[4]));for(var k=a;k<=b;k++){var s={};s[m[2]]=k;t+=math.evaluate(preprocess(m[1]),s);}return t;}
+  m=expr.match(/^prod\s*\((.+),\s*(\w+)\s*=\s*(.+?)\.\.\s*(.+)\)$/i);
+  if(m){var t2=1,a2=parseFloat(evalSimple(m[3])),b2=parseFloat(evalSimple(m[4]));for(var k2=a2;k2<=b2;k2++){var s2={};s2[m[2]]=k2;t2*=math.evaluate(preprocess(m[1]),s2);}return t2;}
+  m=expr.match(/^diff\s*\((.+?)(?:,\s*(\w+))?\)$/i);
+  if(m){var node=math.parse(preprocess(m[1]));return math.simplify(math.derivative(node,m[2]||'x')).toString();}
+  m=expr.match(/^int\s*\((.+),\s*(\w+)\s*=\s*(.+?)\.\.\s*(.+)\)$/i);
+  if(m){var fn=m[1],v=m[2],ia=parseFloat(evalSimple(m[3])),ib=parseFloat(evalSimple(m[4]));var n=1000,h=(ib-ia)/n,tot=0;var ev=function(x){var sc={};sc[v]=x;return math.evaluate(preprocess(fn),sc);};for(var j=0;j<=n;j++){var x=ia+j*h;var c=(j===0||j===n)?1:(j%2===0?2:4);tot+=c*ev(x);}return tot*h/3;}
+  if(/^plot\s*\(/.test(expr))return 'plot() wird nicht unterstützt';
+  m=expr.match(/^(.+)=([^=].*)$/);
+  if(m){
+    var lhs=m[1],rhs=m[2];
+    /* try step-by-step first */
+    var sd=generateSteps(lhs,rhs);
+    if(sd){lastSteps=sd.steps;return sd.result;}
+    lastSteps=null;
+    /* fall back to numerical bisection */
+    var f=function(x){var sc={x:x};return math.evaluate(preprocess(lhs),sc)-math.evaluate(preprocess(rhs||'0'),sc);};
+    return solveEquation(f);
+  }
+  return null;
+}
+function snapRoot(r,f){var rr=Math.round(r);if(Math.abs(r-rr)<1e-6){try{if(Math.abs(f(rr))<1e-6)return rr;}catch(e){}}return Math.round(r*1e10)/1e10;}
+function solveEquation(f){
+  var roots=[],lo=-500,hi=500,N=2000,step=(hi-lo)/N,prevX=lo,prev;
+  try{prev=f(lo);}catch(e){prev=NaN;}
+  if(prev===0)roots.push(lo);
+  for(var i=1;i<=N;i++){var x=lo+i*step,cur;try{cur=f(x);}catch(e){cur=NaN;}if(isFinite(prev)&&isFinite(cur)){if(cur===0){roots.push(x);}else if(prev*cur<0){roots.push(bisection(f,prevX,x,1e-11,200));}}prev=cur;prevX=x;}
+  roots=roots.map(function(r){return snapRoot(r,f);});
+  var uniq=[];roots.forEach(function(r){if(!uniq.some(function(u){return Math.abs(u-r)<1e-6;}))uniq.push(r);});
+  if(!uniq.length)return 'Keine Lösung in [-500,500]';if(uniq.length===1)return uniq[0];return 'x = '+uniq.join('  oder  x = ');
+}
+function bisection(fn,a,b,tol,maxIter){var fa=fn(a),fb=fn(b);if(fa*fb>0)return NaN;for(var i=0;i<maxIter;i++){var mid=(a+b)/2,fm=fn(mid);if(Math.abs(fm)<tol||Math.abs(b-a)/2<tol)return mid;if(fa*fm<0){b=mid;fb=fm;}else{a=mid;fa=fm;}}return (a+b)/2;}
+
+/* ── Evaluate ── */
+function evaluate(raw){
+  var expr=raw.trim();if(!expr)return null;
+  lastSteps=null;
+  var sp=null;try{sp=trySpecial(expr);}catch(e){}
+  if(sp!==null)return sp;
+  return math.evaluate(preprocess(expr),mathScope);
+}
+
+/* ── Format result ── */
+function formatResult(r){
+  if(typeof r==='string')return r;
+  if(r===null||r===undefined)return '';
+  if(typeof r==='number'){
+    if(!isFinite(r))return r>0?'∞':'-∞';
+    if(Number.isInteger(r)&&Math.abs(r)<1e15)return r.toString();
+    return math.format(r,{precision:14});
+  }
+  if(r&&r.isComplex)return formatComplex(r);
+  if(Array.isArray(r)||(r&&r.isMatrix))return math.format(r,{precision:10});
+  /* Unit result (e.g. 2.5 m to cm) */
+  if(r&&typeof r.toNumber==='function')return r.toString();
+  return math.format(r,{precision:14});
+}
+function formatComplex(c){var re=c.re,im=c.im;if(im===0)return formatResult(re);if(re===0)return formatResult(im)+'i';return formatResult(re)+(im<0?'':'+')+(im===1?'':(im===-1?'-':formatResult(im)))+'i';}
+function formatPreview(s){var p=s.replace(/pi/g,'π').replace(/sqrt\s*\(/g,'√(').replace(/\*/g,'×');if(angleMode==='deg'){p=p.replace(/\b(sin|cos|tan|cot|sec|csc)\s*\(([^)]*)\)/g,function(mm,fn,arg){return fn+'('+arg+'°)';});}return p;}
+
+/* ── Display ── */
+function clearDisplay(){
+  $formula.textContent='';$result.textContent='';$error.textContent='';$alt.textContent='';
+  $steps.innerHTML='';$steps.classList.remove('open');
+}
+function showResult(expr,res,steps){
+  $formula.textContent=formatPreview(expr);$result.textContent=res;$error.textContent='';
+  $alt.textContent='';$steps.innerHTML='';$steps.classList.remove('open');
+  if(steps&&steps.length){
+    steps.forEach(function(s){
+      var el=document.createElement('span');
+      el.className='mr-step-line'+(s.charAt(0)==='✓'?' mr-step-final':'');
+      el.textContent=s;$steps.appendChild(el);
+    });
+    $steps.classList.add('open');
+  } else {
+    /* show fraction alternative when result is a non-integer decimal */
+    var num=parseFloat(res);
+    if(isFinite(num)){var frac=tryFraction(num);if(frac)$alt.textContent='= '+frac;}
+  }
+}
+function showError(msg){$error.textContent=String(msg);}
+function updatePreview(){
+  clearDisplay();$hint.textContent='';
+}
+function getHist(){try{return JSON.parse(localStorage.getItem(HIST_KEY)||'[]');}catch(e){return[];}}
+function saveHist(h){try{localStorage.setItem(HIST_KEY,JSON.stringify(h));}catch(e){}}
+function addHist(expr,res){var h=getHist();h.unshift({expr:expr,res:res});if(h.length>MAX_HIST)h.length=MAX_HIST;saveHist(h);histIndex=-1;}
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function renderHist(){var h=getHist();$histList.innerHTML='';h.forEach(function(item){var row=document.createElement('div');row.className='mr-hist-item';row.innerHTML='<span class="mr-hist-expr">'+escHtml(item.expr)+'</span><span class="mr-hist-res">= '+escHtml(item.res)+'</span>';row.addEventListener('click',function(){$in.value=item.expr;updatePreview();$in.focus();});$histList.appendChild(row);});}
+document.getElementById('mr-histbtn').addEventListener('click',function(){histOpen=!histOpen;$hist.classList.toggle('mr-open',histOpen);this.innerHTML='-- Verlauf -- '+(histOpen?'&#9652;':'&#9662;');if(histOpen)renderHist();});
+document.getElementById('mr-hist-clear').addEventListener('click',function(){saveHist([]);renderHist();});
+function histUp(){var h=getHist();if(!h.length)return;histIndex=Math.min(histIndex+1,h.length-1);$in.value=h[histIndex].expr;updatePreview();}
+function histDown(){var h=getHist();if(histIndex<=0){histIndex=-1;$in.value='';updatePreview();return;}histIndex--;$in.value=h[histIndex].expr;updatePreview();}
+document.getElementById('mr-up').addEventListener('click',histUp);
+document.getElementById('mr-down').addEventListener('click',histDown);
+$shift.addEventListener('click',function(){shiftOn=!shiftOn;$keys.classList.toggle('mr-shift',shiftOn);$shift.classList.toggle('mr-on',shiftOn);});
+function offShift(){if(!shiftOn)return;shiftOn=false;$keys.classList.remove('mr-shift');$shift.classList.remove('mr-on');}
+document.querySelectorAll('input[name="mr-angle"]').forEach(function(r){r.addEventListener('change',function(){angleMode=this.value;updatePreview();});});
+function insertAt(str){var el=$in,s=el.selectionStart,e=el.selectionEnd;el.value=el.value.slice(0,s)+str+el.value.slice(e);el.selectionStart=el.selectionEnd=s+str.length;updatePreview();el.focus();}
+document.querySelectorAll('#mr-keys,#mr-extra').forEach(function(grid){grid.addEventListener('click',function(ev){
+  var btn=ev.target.closest('button');if(!btn||btn.id==='mr-shift')return;
+  if(btn.id==='mr-ei'){insertAt(shiftOn?'i':'e');offShift();return;}
+  if(btn.id==='mr-div'){insertAt(shiftOn?' mod ':'/');offShift();return;}
+  if(btn.id==='mr-mul'){insertAt(shiftOn?'#':'*');offShift();return;}
+  if(btn.id==='mr-pct'){insertAt(shiftOn?'!':'%');offShift();return;}
+  if(btn.id==='mr-lsh'){insertAt(shiftOn?'rol(':' lsh ');offShift();return;}
+  if(btn.id==='mr-rsh'){insertAt(shiftOn?'ror(':' rsh ');offShift();return;}
+  var ins=btn.dataset.ins,fn=btn.dataset.fn,act=btn.dataset.act;
+  if(ins){insertAt(ins);offShift();return;}
+  if(fn){var shifted={sin:'asin',cos:'acos',tan:'atan',sinh:'asinh',cosh:'acosh',tanh:'atanh',cot:'acot',sec:'asec',csc:'acsc'};var real=(shiftOn&&shifted[fn])?shifted[fn]:fn;if(real==='sqrt'){insertAt('√(');}else if(real==='sqrt3'){insertAt('³√(');}else if(real==='pow10'){insertAt('10^(');}else if(real==='pow2'){insertAt('2^(');}else if(real==='floor'){insertAt('⌊(');}else if(real==='ceil'){insertAt('⌈(');}else{insertAt(real+'(');}offShift();return;}
+  if(act==='backspace'){var s=$in.selectionStart,e=$in.selectionEnd;if(s!==e){$in.value=$in.value.slice(0,s)+$in.value.slice(e);$in.selectionStart=$in.selectionEnd=s;}else if(s>0){$in.value=$in.value.slice(0,s-1)+$in.value.slice(s);$in.selectionStart=$in.selectionEnd=s-1;}updatePreview();$in.focus();return;}
+  if(act==='clear'){$in.value='';clearDisplay();$hint.textContent='';$in.focus();return;}
+  if(act==='negate'){var v=$in.value.trim();if(v===''){insertAt('-');return;}$in.value=v.charAt(0)==='-'?v.slice(1):'-'+v;updatePreview();$in.focus();return;}
+  if(act==='swap'){var tmp=$in.value;$in.value=lastExpr;lastExpr=tmp;updatePreview();$in.focus();return;}
+  if(act==='xeq'){insertAt('x=');return;}
+  if(act==='equals'){doCalculate();return;}
+  if(act==='conv-hex'){convertBase(16);return;}
+  if(act==='conv-bin'){convertBase(2);return;}
+  offShift();
+});});
+function doCalculate(){
+  var raw=$in.value.trim();if(!raw)return;
+  lastSteps=null;
+  try{
+    var result=evaluate(raw),fmt=formatResult(result);
+    var steps=lastSteps;lastSteps=null;
+    ans=result;mathScope['ans']=result;lastExpr=raw;
+    showResult(raw,fmt,steps);
+    addHist(raw,fmt);if(histOpen)renderHist();
+    $in.value=fmt;$hint.textContent='';clearDisplay();
+  }catch(err){$in.value='Error';clearDisplay();}
+}
+function convertBase(base){var raw=$in.value.trim()||String(ans);try{var r=evaluate(raw||'0');var n=Math.round(typeof r==='number'?r:(r&&r.re)||0);var out=base===16?'0x'+n.toString(16).toUpperCase():'0b'+n.toString(2);showResult(raw+' (base '+base+')',out);addHist(raw,out);if(histOpen)renderHist();}catch(e){showError(e.message||e);}}
+$in.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();doCalculate();}else if(e.key==='ArrowUp'){e.preventDefault();histUp();}else if(e.key==='ArrowDown'){e.preventDefault();histDown();}else if(e.key==='Escape'){$in.value='';clearDisplay();$hint.textContent='';}});
+$in.addEventListener('input',updatePreview);
+$in.addEventListener('paste',function(){setTimeout(updatePreview,10);});
+function ready(){if(window.math){setupMath();}else{setTimeout(ready,60);}}
+ready();
+})();
+</script>
+</body>
+</html>
