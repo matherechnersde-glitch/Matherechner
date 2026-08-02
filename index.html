@@ -30,7 +30,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
   {"@type":"WebSite","@id":"https://matherechners.de/#website","url":"https://matherechners.de/","name":"Matherechner","inLanguage":"de"},
-  {"@type":"WebPage","@id":"https://matherechners.de/#webpage","url":"https://matherechners.de/","name":"MatheRechner Kostenloser Online Rechner für Matheaufgaben","isPartOf":{"@id":"https://matherechners.de/#website"},"datePublished":"2026-07-11","dateModified":"2026-07-14","inLanguage":"de"},
+  {"@type":"WebPage","@id":"https://matherechners.de/#webpage","url":"https://matherechners.de/","name":"MatheRechner Kostenloser Online Rechner für Matheaufgaben","isPartOf":{"@id":"https://matherechners.de/#website"},"datePublished":"2026-08-03T01:07:18+05:00","dateModified":"2026-08-03T01:07:18+05:00","inLanguage":"de"},
   {"@type":"Organization","@id":"https://matherechners.de/#organization","name":"Matherechner","url":"https://matherechners.de/","logo":"https://matherechners.de/images/Matherechnerlogo.webp"},
   {"@type":"WebApplication","name":"Matherechner","url":"https://matherechners.de/","applicationCategory":"EducationalApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}},
   {"@type":"FAQPage","mainEntity":[
@@ -288,6 +288,7 @@ body{margin:0}
   #matherechner-page *{transition:none!important;animation:none!important}
 }
 </style>
+<link rel="stylesheet" href="/mathrechner-calculator.css">
 </head>
 <body>
 <div id="matherechner-page">
@@ -312,7 +313,30 @@ body{margin:0}
   <div class="mr-container">
     <h1>Matherechner kostenlos online nutzen</h1>
 
-    <!-- CALCULATOR — static HTML, crawlable without JS -->
+    <!-- GOOGLE-STYLE CALCULATOR - isolated for easy rollback -->
+    <div class="mrx" id="mrx-calculator" data-tab="algebra">
+      <div class="mrx-display">
+        <input class="mrx-input" type="text" inputmode="text" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Mathematischen Ausdruck eingeben">
+        <div class="mrx-output" aria-hidden="true"></div>
+        <button class="mrx-display-clear" type="button" aria-label="Eingabe löschen">&times;</button>
+        <span class="mrx-live" aria-live="polite"></span>
+      </div>
+      <div class="mrx-tabs" role="tablist" aria-label="Funktionsbereiche">
+        <button class="mrx-tab" type="button" role="tab" data-tab="algebra" aria-selected="true">Algebra</button>
+        <button class="mrx-tab" type="button" role="tab" data-tab="trig" aria-selected="false">Trigonometrie</button>
+        <button class="mrx-tab" type="button" role="tab" data-tab="calculus" aria-selected="false">Analysis</button>
+      </div>
+      <div class="mrx-keypad" aria-label="Tastatur">
+        <div class="mrx-functions" aria-live="polite"></div>
+        <div class="mrx-numbers"></div>
+      </div>
+      <div class="mrx-gallery-row">
+        <div class="mrx-gallery" aria-label="Beispielausdrücke"></div>
+        <button class="mrx-expand" type="button" aria-expanded="false" aria-label="Alle Beispiele anzeigen">&#8964;</button>
+      </div>
+    </div>
+
+    <!-- LEGACY CALCULATOR - retained as a rollback fallback -->
     <div id="mr-calc">
       <div class="mr-screen">
         <div class="mr-formula" id="mr-formula"></div>
@@ -618,6 +642,7 @@ body{margin:0}
 </div><!-- /#matherechner-page -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.2/math.min.js" defer></script>
+<script src="/mathrechner-calculator.js" defer></script>
 <script defer src="https://www.googletagmanager.com/gtag/js?id={{GA4_MEASUREMENT_ID}}"></script>
 <script>
 (function(){
