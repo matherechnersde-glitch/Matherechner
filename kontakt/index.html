@@ -3,33 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kontakt – Matherechner | Kostenloser Online-Rechner</title>
-<meta name="description" content="Kontaktieren Sie uns bei Fragen, Feedback oder technischen Problemen rund um den Matherechner. Wir antworten innerhalb von 24–48 Stunden.">
+<title>Kontakt zu Matherechner | Fragen, Feedback und Hilfe</title>
+<meta name="description" content="Kontaktieren Sie Matherechner bei Fragen, Feedback oder technischen Problemen mit dem Online-Rechner. Wir helfen Ihnen schnell und unkompliziert weiter.">
 <link rel="canonical" href="https://matherechners.de/kontakt/">
 <meta name="robots" content="index, follow">
+<meta property="article:published_time" content="2026-08-03T22:01:32+05:00">
+<meta property="article:modified_time" content="2026-08-03T22:01:32+05:00">
 <link rel="icon" type="image/webp" href="/images/favicon%20matherechner.webp">
 <link rel="shortcut icon" href="/images/favicon%20matherechner.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json" data-page-dates>
+{"@context":"https://schema.org","@type":"WebPage","name":"Kontakt zu Matherechner","url":"https://matherechners.de/kontakt/","datePublished":"2026-08-03T22:01:32+05:00","dateModified":"2026-08-03T22:01:32+05:00","inLanguage":"de"}
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Poppins,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f4f6f8;color:#4a5568;line-height:1.7;font-size:16px}
-.sp-header{position:sticky;top:0;z-index:100;background:#1A212E;border-bottom:1px solid rgba(255,255,255,.3)}
+.sp-header{position:absolute;top:0;left:0;right:0;z-index:100;background:transparent;border-bottom:1px solid rgba(255,255,255,.3)}
 .sp-con{max-width:1140px;margin:0 auto;padding:0 22px}
-.sp-header .sp-con{display:flex;align-items:center;justify-content:space-between;padding-top:5px;padding-bottom:5px}
+.sp-header .sp-con{max-width:1080px;display:flex;align-items:center;justify-content:space-between;padding-top:5px;padding-bottom:5px}
 .sp-logo{display:flex;align-items:center;text-decoration:none}
 .sp-logo img{height:65px;width:auto;display:block}
-.sp-nav{display:flex;gap:4px}
+.sp-nav{display:flex;align-items:center;gap:4px}
 .sp-nav a{color:#C7CEDB;text-decoration:none;font-size:16px;font-weight:500;padding:6px 12px;border-radius:8px;transition:color .15s,background .15s}
-.sp-nav a:hover,.sp-nav a.active{color:#fff;background:rgba(255,255,255,.07)}
+.sp-nav a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.sp-nav a.active{color:#7F60F0;border-bottom:2px solid #7F60F0;border-radius:0;padding-bottom:4px}
 .sp-burger{display:none;background:none;border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#fff;font-size:18px;padding:4px 10px;cursor:pointer;line-height:1}
 @media(max-width:760px){
-  .sp-nav{display:none;position:absolute;top:76px;left:0;right:0;background:#121B2E;border-bottom:1px solid rgba(255,255,255,.1);padding:12px 22px;flex-direction:column;gap:2px}
+  .sp-nav{display:flex;align-items:center;gap:4px}
   .sp-nav.open{display:flex}
   .sp-burger{display:block}
 }
-.sp-hero{background:#1A212E;padding:60px 0 50px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06)}
+.sp-hero{background:#1A212E;padding:132px 0 50px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06)}
 .sp-hero h1{font-size:35px;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.3px}
 .sp-hero p{color:#B8C0CE;font-size:16px;max-width:560px;margin:0 auto}
 .sp-main{padding:64px 0 80px}
@@ -80,15 +87,15 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
 
 <header class="sp-header">
   <div class="sp-con">
-    <a class="sp-logo" href="/"><img src="/images/Matherechnerlogo.webp" alt="Matherechner Logo" loading="eager"></a>
-    <nav class="sp-nav" id="sp-nav">
-      <a href="/">Home</a>
-      <a href="/#rechner">Rechner</a>
+    <a class="sp-logo" href="/">
+      <img src="/images/Matherechnerlogo.webp" alt="Matherechner Logo" loading="eager">
+    </a>
+    <nav class="sp-nav" id="sp-nav" aria-label="Hauptnavigation">
+      <a href="/">Matherechner</a>
       <a href="/ueber-uns/">Über uns</a>
-      <a href="/#faq">FAQ</a>
       <a href="/kontakt/" class="active">Kontakt</a>
     </nav>
-    <button class="sp-burger" id="sp-burger" aria-label="Menü">&#9776;</button>
+    <button class="sp-burger" id="sp-burger" aria-label="Menü öffnen" aria-expanded="false">&#9776;</button>
   </div>
 </header>
 
@@ -212,7 +219,7 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
 var b=document.getElementById('sp-burger'),n=document.getElementById('sp-nav');
-if(b&&n)b.addEventListener('click',function(){n.classList.toggle('open');});
+if(b&&n)b.addEventListener('click',function(){var open=n.classList.toggle('open');b.setAttribute('aria-expanded',open);});
 document.querySelectorAll('.faq-q').forEach(function(d){
   d.addEventListener('toggle',function(){
     document.querySelectorAll('.faq-q[open]').forEach(function(o){if(o!==d)o.removeAttribute('open');});
