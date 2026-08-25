@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
@@ -30,10 +30,12 @@ body{font-family:Poppins,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans
 .sp-nav a{color:#C7CEDB;text-decoration:none;font-size:16px;font-weight:500;padding:6px 12px;border-radius:8px;transition:color .15s,background .15s}
 .sp-nav a:hover{color:#fff;background:rgba(255,255,255,.07)}
 .sp-nav a.active{color:#7F60F0;border-bottom:2px solid #7F60F0;border-radius:0;padding-bottom:4px}
+.sp-dd{position:relative}.sp-dd-btn{color:#C7CEDB;text-decoration:none;font-size:16px;font-weight:500;padding:6px 12px;border-radius:8px;transition:color .15s,background .15s;background:none;border:0;font-family:inherit;cursor:pointer}.sp-dd:hover .sp-dd-btn{color:#fff;background:rgba(255,255,255,.07)}.sp-dd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:205px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:8px;box-shadow:0 18px 38px rgba(0,0,0,.18);opacity:0;visibility:hidden;transform:translateY(8px);transition:.18s;z-index:30}.sp-dd:hover .sp-dd-menu{opacity:1;visibility:visible;transform:translateY(0)}.sp-dd-menu a{display:block;color:#1a212e;padding:10px 12px;border-radius:9px}.sp-dd-menu a:hover{background:#f3f0ff;color:#7F60F0}
 .sp-burger{display:none;background:none;border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#fff;font-size:18px;padding:4px 10px;cursor:pointer;line-height:1}
 @media(max-width:760px){
   .sp-nav{display:flex;align-items:center;gap:4px}
   .sp-nav.open{display:flex}
+  .sp-dd-menu{position:static;opacity:1;visibility:visible;transform:none;margin-top:6px}
   .sp-burger{display:block}
 }
 .sp-hero{background:#1A212E;padding:132px 0 50px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06)}
@@ -67,7 +69,7 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
 .faq-q{background:#fff;border:1px solid #b8bfcb;border-radius:10px;overflow:hidden}
 .faq-q summary{cursor:pointer;padding:16px 20px;font-size:15px;font-weight:600;color:#1a212e;display:flex;justify-content:space-between;align-items:center;list-style:none;user-select:none}
 .faq-q summary::-webkit-details-marker{display:none}
-.faq-q summary::after{content:"▾";color:#9ca3af;transition:transform .2s;flex-shrink:0}
+.faq-q summary::after{content:"â–¾";color:#9ca3af;transition:transform .2s;flex-shrink:0}
 .faq-q[open] summary::after{transform:rotate(180deg)}
 .faq-q p{padding:14px 20px 18px;font-size:14px;color:#4a5568;border-top:1px solid #e5e7eb}
 .sp-footer{background:transparent;padding:0}
@@ -92,17 +94,19 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
     </a>
     <nav class="sp-nav" id="sp-nav" aria-label="Hauptnavigation">
       <a href="/">Matherechner</a>
+      <div class="sp-dd"><button class="sp-dd-btn" type="button">Rechners</button><div class="sp-dd-menu"><a href="/prozentrechner/">Prozentrechner</a></div></div>
+      <a href="/blog/">Blog</a>
       <a href="/ueber-uns/">Über uns</a>
       <a href="/kontakt/" class="active">Kontakt</a>
     </nav>
-    <button class="sp-burger" id="sp-burger" aria-label="Menü öffnen" aria-expanded="false">&#9776;</button>
+    <button class="sp-burger" id="sp-burger" aria-label="MenÃ¼ Ã¶ffnen" aria-expanded="false">&#9776;</button>
   </div>
 </header>
 
 <div class="sp-hero">
   <div class="sp-con">
     <h1>Kontakt</h1>
-    <p>Haben Sie Fragen, Anregungen oder Feedback? Wir freuen uns von Ihnen zu hören.</p>
+    <p>Haben Sie Fragen, Anregungen oder Feedback? Wir freuen uns von Ihnen zu hÃ¶ren.</p>
   </div>
 </div>
 
@@ -112,7 +116,7 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
 
       <div class="sp-form-card">
         <h2>Nachricht senden</h2>
-        <p class="sub">Wir antworten in der Regel innerhalb von 24–48 Stunden an Werktagen.</p>
+        <p class="sub">Wir antworten in der Regel innerhalb von 24â€“48 Stunden an Werktagen.</p>
         <form action="https://formspree.io/f/{{FORMSPREE_ID}}" method="POST">
           <div class="form-row">
             <div class="form-group">
@@ -136,9 +140,9 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
             <label for="nachricht">Nachricht</label>
             <textarea id="nachricht" name="nachricht" placeholder="Schreiben Sie uns Ihre Frage oder Ihr Anliegen..." required></textarea>
           </div>
-          <input type="hidden" name="_subject" value="Neue Kontaktanfrage – Matherechner">
+          <input type="hidden" name="_subject" value="Neue Kontaktanfrage â€“ Matherechner">
           <button type="submit" class="btn-submit">Nachricht senden</button>
-          <p class="form-note">Ihre Daten werden vertraulich behandelt. Weitere Informationen finden Sie in unserer <a href="/datenschutz/" style="color:#7F60F0">Datenschutzerklärung</a>.</p>
+          <p class="form-note">Ihre Daten werden vertraulich behandelt. Weitere Informationen finden Sie in unserer <a href="/datenschutz/" style="color:#7F60F0">DatenschutzerklÃ¤rung</a>.</p>
         </form>
       </div>
 
@@ -153,30 +157,30 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
         </div>
         <div class="info-card">
           <h3>Technischer Support</h3>
-          <p>Haben Sie einen Fehler entdeckt oder eine Funktion, die nicht wie erwartet funktioniert? Beschreiben Sie das Problem so genau wie möglich – wir kümmern uns darum.</p>
+          <p>Haben Sie einen Fehler entdeckt oder eine Funktion, die nicht wie erwartet funktioniert? Beschreiben Sie das Problem so genau wie mÃ¶glich â€“ wir kÃ¼mmern uns darum.</p>
         </div>
         <div class="info-card">
-          <h3>Vorschläge &amp; Feedback</h3>
-          <p>Wir freuen uns über Ideen für neue Funktionen oder Verbesserungen. Ihr Feedback hilft uns, den Rechner noch besser zu machen.</p>
+          <h3>VorschlÃ¤ge &amp; Feedback</h3>
+          <p>Wir freuen uns Ã¼ber Ideen fÃ¼r neue Funktionen oder Verbesserungen. Ihr Feedback hilft uns, den Rechner noch besser zu machen.</p>
         </div>
       </div>
 
     </div>
 
     <div class="sp-faq">
-      <h2>Häufige Fragen</h2>
+      <h2>HÃ¤ufige Fragen</h2>
       <div class="faq-list">
         <details class="faq-q">
           <summary>Wie schnell erhalte ich eine Antwort?</summary>
-          <p>Wir bemühen uns, alle Anfragen innerhalb von 24–48 Stunden an Werktagen zu beantworten. Bei hohem Aufkommen kann es gelegentlich etwas länger dauern.</p>
+          <p>Wir bemÃ¼hen uns, alle Anfragen innerhalb von 24â€“48 Stunden an Werktagen zu beantworten. Bei hohem Aufkommen kann es gelegentlich etwas lÃ¤nger dauern.</p>
         </details>
         <details class="faq-q">
           <summary>Kann ich einen Fehler im Rechner melden?</summary>
-          <p>Ja, gerne! Beschreiben Sie den Fehler möglichst genau – am besten mit dem Eingabe-Ausdruck und dem erwarteten vs. tatsächlichen Ergebnis. So können wir das Problem schnell eingrenzen und beheben.</p>
+          <p>Ja, gerne! Beschreiben Sie den Fehler mÃ¶glichst genau â€“ am besten mit dem Eingabe-Ausdruck und dem erwarteten vs. tatsÃ¤chlichen Ergebnis. So kÃ¶nnen wir das Problem schnell eingrenzen und beheben.</p>
         </details>
         <details class="faq-q">
           <summary>Ist der Matherechner kostenlos?</summary>
-          <p>Ja, der Matherechner ist vollständig kostenlos. Sie benötigen keine Registrierung, kein Abo und keinen Download.</p>
+          <p>Ja, der Matherechner ist vollstÃ¤ndig kostenlos. Sie benÃ¶tigen keine Registrierung, kein Abo und keinen Download.</p>
         </details>
       </div>
     </div>
@@ -190,14 +194,14 @@ textarea{resize:vertical;min-height:130px;line-height:1.6}
       <div class="sp-ft-grid">
         <div class="sp-ft-about">
           <a class="sp-logo" href="/"><img src="/images/Matherechnerlogo.webp" alt="Matherechner Logo" style="height:70px;width:auto;display:block;" loading="lazy"></a>
-          <p>Prozentsätze, Brüche, Gleichungen und Zinsaufgaben in Sekunden lösen – kostenlos, im Browser, auf jedem Gerät.</p>
+          <p>ProzentsÃ¤tze, BrÃ¼che, Gleichungen und Zinsaufgaben in Sekunden lÃ¶sen â€“ kostenlos, im Browser, auf jedem GerÃ¤t.</p>
         </div>
         <div class="sp-ft-col">
           <h4>Navigation</h4>
           <ul class="sp-ft-links">
             <li><a href="/">Home</a></li>
             <li><a href="/#rechner">Rechner</a></li>
-            <li><a href="/ueber-uns/">Über uns</a></li>
+            <li><a href="/ueber-uns/">Ãœber uns</a></li>
             <li><a href="/kontakt/">Kontakt</a></li>
           </ul>
         </div>
@@ -228,3 +232,6 @@ document.querySelectorAll('.faq-q').forEach(function(d){
 </script>
 </body>
 </html>
+
+
+
