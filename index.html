@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
@@ -74,17 +74,25 @@ body{margin:0}
 #matherechner-page .mr-logo-ic{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;flex-shrink:0}
 #matherechner-page .mr-logo-tx{color:var(--txt);font-weight:700;font-size:17px}
 #matherechner-page .mr-nav{display:flex;align-items:center;gap:4px}
-#matherechner-page .mr-nav a{color:#C7CEDB;text-decoration:none;font-size:16px;font-weight:500;padding:6px 12px;border-radius:8px;transition:color .15s,background .15s}
-#matherechner-page .mr-nav a:hover{color:#fff;background:rgba(255,255,255,.07)}
+#matherechner-page .mr-nav a,#matherechner-page .mr-dd-btn{color:#C7CEDB;text-decoration:none;font-size:16px;font-weight:500;padding:6px 12px;border-radius:8px;transition:color .15s,background .15s;background:none;border:0;font-family:inherit;cursor:pointer}
+#matherechner-page .mr-nav a:hover,#matherechner-page .mr-dd:hover .mr-dd-btn,#matherechner-page .mr-dd:focus-within .mr-dd-btn{color:#fff;background:rgba(255,255,255,.07)}
 #matherechner-page .mr-nav a.active{color:var(--accent);border-bottom:2px solid var(--accent);border-radius:0;padding-bottom:4px}
+#matherechner-page .mr-dd{position:relative}
+#matherechner-page .mr-dd-menu{position:absolute;top:calc(100% + 10px);left:0;min-width:205px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:8px;box-shadow:0 18px 38px rgba(0,0,0,.18);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .18s,visibility .18s,transform .18s;z-index:80}
+#matherechner-page .mr-dd:hover .mr-dd-menu,#matherechner-page .mr-dd:focus-within .mr-dd-menu{opacity:1;visibility:visible;transform:translateY(0)}
+#matherechner-page .mr-dd-menu a{display:block;color:#1a212e;padding:10px 12px;border-radius:9px;border:0}
+#matherechner-page .mr-dd-menu a:hover{background:#f3f0ff;color:var(--accent)}
 #matherechner-page .mr-burger{display:none;background:none;border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#fff;font-size:18px;padding:4px 10px;cursor:pointer;line-height:1}
 @media(max-width:760px){
-  #matherechner-page .mr-nav{display:none;position:absolute;top:58px;right:22px;left:22px;background:var(--bg-deep);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px;flex-direction:column;align-items:stretch;gap:2px;box-shadow:0 16px 40px rgba(0,0,0,.5)}
-  #matherechner-page .mr-nav.mr-open{display:flex}
-  #matherechner-page .mr-nav a{padding:10px 14px}
   #matherechner-page .mr-burger{display:block}
+  #matherechner-page .mr-nav{display:none;position:absolute;top:58px;right:18px;background:#111827;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px;box-shadow:0 18px 40px rgba(0,0,0,.35);min-width:220px;z-index:90}
+  #matherechner-page .mr-nav.mr-open{display:block}
+  #matherechner-page .mr-nav a,#matherechner-page .mr-dd-btn{display:block;width:100%;text-align:left;padding:10px 12px;border-radius:10px}
+  #matherechner-page .mr-nav a.active{border-bottom:0;border-radius:10px;background:rgba(139,99,246,.14)}
+  #matherechner-page .mr-dd-menu{position:static;opacity:1;visibility:visible;transform:none;margin-top:6px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);box-shadow:none;min-width:0}
+  #matherechner-page .mr-dd-menu a{color:#C7CEDB}
+  #matherechner-page .mr-dd-menu a:hover{background:rgba(255,255,255,.08);color:#fff}
 }
-
 /* HERO */
 #matherechner-page .mr-hero{background:var(--bg-hero);padding:112px 0 96px;text-align:center}
 #matherechner-page .mr-hero h1{font-size:35px;font-weight:800;max-width:980px;margin:0 auto 18px;letter-spacing:-.5px}
