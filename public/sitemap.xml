@@ -47,5 +47,11 @@
     <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url></urlset>
+  </url>  <url>
+    <loc>https://matherechners.de/matherechner-pi/</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
 
