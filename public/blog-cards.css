@@ -1,0 +1,17 @@
+/* Compact article cards using the site's existing purple palette. */
+.blog-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.blog-card{display:flex;flex-direction:column;min-width:0;max-width:none;padding:10px;background:#fff;border:1px solid #e5e5ee;border-radius:22px;box-shadow:0 4px 18px rgba(26,33,46,.045);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.blog-card:hover{transform:translateY(-5px);border-color:#c7b9f8;box-shadow:0 16px 32px rgba(67,47,121,.11)}
+.blog-card:focus-visible{outline:3px solid #7f60f0;outline-offset:5px}
+.blog-card img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:14px;background:#f3f0ff}
+.blog-card-body{display:flex;flex:1;flex-direction:column;align-items:flex-start;padding:19px 12px 8px}
+.blog-tag{background:#f3f0ff;color:#6445ce;font-size:10px;font-weight:600;letter-spacing:.45px;line-height:1.6;padding:5px 10px;border-radius:7px;margin-bottom:12px}
+.blog-card h2{font-size:20px;font-weight:700;line-height:1.4;letter-spacing:-.4px;margin-bottom:10px;transition:color .2s ease}
+.blog-card:hover h2{color:#6445ce}
+.blog-card p{font-size:13px;line-height:1.8;color:#687182;margin-bottom:22px}
+.blog-more{display:flex;width:100%;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding:14px 0 3px;border-top:1px solid #efedf4;font-size:12px;font-weight:600;color:#6445ce}
+.blog-more-icon{display:grid;place-items:center;width:29px;height:29px;border-radius:50%;background:#f3f0ff;font-size:17px;line-height:1;transition:background .2s,color .2s,transform .2s}
+.blog-card:hover .blog-more-icon{background:#7f60f0;color:#fff;transform:translateX(2px)}
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.blog-grid{grid-template-columns:minmax(0,380px);gap:20px}.blog-card h2{font-size:20px}.blog-card-body{padding:17px 12px 8px}}
+@media(prefers-reduced-motion:reduce){.blog-card,.blog-card h2,.blog-more-icon{transition:none}.blog-card:hover,.blog-card:hover .blog-more-icon{transform:none}}
